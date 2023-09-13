@@ -4,7 +4,8 @@
   "description": "Aplicação de gerenciamento de cinema que tem com o objetivo aplicar e aprimorar conhecimentos de fermentas atuais utilizadas no projeto.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "prisma": "^5.2.0"
   }
 }

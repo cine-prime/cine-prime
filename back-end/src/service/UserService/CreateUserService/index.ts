@@ -21,7 +21,7 @@ export class CreateUserService {
     }
 
     if (cpf.length !== 11) {
-      return res.status(400).json({ message: "CPF inválido" });
+      return res.status(400).json({ message: "CPF inválido, preencha somente os 11 números, sem pontuações ou espaços" });
     }
 
     const userExiste = await prisma.user.findFirst({
@@ -36,12 +36,12 @@ export class CreateUserService {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ message: "Formato de email inválido" });
+      return res.status(400).json({ message: "Formato de email inválido, siga o formato user@mail.com" });
     }
 
     const telefoneRegex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
     if (!telefoneRegex.test(telefone)) {
-      return res.status(400).json({ message: "Formato de telefone inválido" });
+      return res.status(400).json({ message: "Formato de telefone inválido, siga exatemente o formato (85) 99292-9292" });
     }
 
     const emailExiste = await prisma.user.findFirst({

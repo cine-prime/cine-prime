@@ -13,6 +13,10 @@ export class UserAuthenticationService {
   async execute({email, password}: IUser,
     req: Request, res: Response, next: NextFunction ) {
 
+    if(!email || !password) {
+      return res.status(400).json({ error: 'Email e senha são obrigatórios' });
+    }
+
     const user = await prisma.user.findUnique({
       where: {
         email: email,

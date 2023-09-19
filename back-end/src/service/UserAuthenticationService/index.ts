@@ -14,7 +14,7 @@ export class UserAuthenticationService {
     req: Request, res: Response, next: NextFunction ) {
 
     if(!email || !password) {
-      return res.status(400).json({ error: 'Email e senha são obrigatórios' });
+      return res.status(400).json({ message: 'Email e senha são obrigatórios' });
     }
 
     const user = await prisma.user.findUnique({
@@ -24,10 +24,10 @@ export class UserAuthenticationService {
     });
 
     if (!user) {
-      return res.status(400).json({ error: 'User not exists' });
+      return res.status(400).json({ message: 'Usuário não existe no sistema' });
     }
 
-    if(password !== user.password)res.status(400).json({ error: 'Password not match' });
+    if(password !== user.password)res.status(400).json({ message: 'Senha incorreta' });
 
     const token = sign({
         email: user.email,
@@ -35,11 +35,8 @@ export class UserAuthenticationService {
         isAdmin: user.isAdmin,
       },
       'secret',
-      {
-        expiresIn: '1d',
-      },
     );
 
-    return res.json({ token });
+    return res.status(200).json({ token: token, userEmail: user.email });
   }
 }

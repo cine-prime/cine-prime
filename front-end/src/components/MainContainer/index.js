@@ -5,7 +5,7 @@ import './index.css'
 
 export default function MainContainer({children}) {
   return (
-    <Container class="centered-container">
+    <Container className="centered-container">
       {children}
     </Container>
   )

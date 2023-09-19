@@ -27,7 +27,7 @@ export class UserAuthenticationService {
       return res.status(400).json({ message: 'Usuário não existe no sistema' });
     }
 
-    if(password !== user.password)res.status(400).json({ message: 'Senha incorreta' });
+    if(password !== user.password) return res.status(400).json({ message: 'Senha incorreta' });
 
     const token = sign({
         email: user.email,

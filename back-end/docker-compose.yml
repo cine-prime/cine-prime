@@ -5,8 +5,8 @@ services:
     container_name: cineprime_postgres_dev
     image: postgres
     environment:
-      POSTGRES_USER: 'username'
-      POSTGRES_PASSWORD: 'password'
-      POSTGRES_DB: 'cineprime_db'
+      POSTGRES_USER: '${USERNAME}'
+      POSTGRES_PASSWORD: '${PASSWORD}'
+      POSTGRES_DB: '${DB_NAME}'
     ports:
-      - "5432:5432"
+      - '${EXTERNAL_DOCKER_PORT}:5432' 

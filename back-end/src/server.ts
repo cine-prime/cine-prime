@@ -2,7 +2,7 @@ import express from 'express';
 import { routes } from './routes/routes';
 
 const app = express();
-const port = 3333;
+const port = process.env.BACKEND_PORT;
 
 app.use(express.json());
 

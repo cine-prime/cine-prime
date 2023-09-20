@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate  } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
 
 import Api from '../../services/Api'
 
@@ -13,7 +14,8 @@ export default function Singin(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
 
       const { data } = await Api.post('/auth', {
@@ -33,6 +35,7 @@ export default function Singin(props) {
 
   return (
     <MainContainer>
+      <Form onSubmit={handleSubmit}>
       <InputText 
         label='Email:'
         value={email}
@@ -44,7 +47,8 @@ export default function Singin(props) {
         value={password}
         onChange={(obj) => setPassword(obj.target.value)}
       />
-      <Button variant='success' text='Entrar' onClick={() => handleSubmit()} />
+      <Button variant='success' text='Entrar' type='submit' />
+      </Form>
     </MainContainer>
   )
 }

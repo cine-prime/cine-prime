@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate  } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
 
 import Api from '../../services/Api'
 
@@ -16,7 +17,8 @@ export default function Singup(props) {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
 
       const { data } = await Api.post('/user', {
@@ -38,37 +40,39 @@ export default function Singup(props) {
 
   return (
     <MainContainer>
-      <InputText 
-        label='Nome:'
-        placeholder='Ex: Ana Maria'
-        value={name}
-        onChange={(obj) => setName(obj.target.value)}
-      />
-      <InputText 
-        label='CPF:'
-        placeholder='Ex: 02738499302'
-        value={cpf}
-        onChange={(obj) => setCpf(obj.target.value)}
-      />
-      <InputText 
-        label='Email:'
-        placeholder='Ex: anamaria@gmail.com'
-        value={email}
-        onChange={(obj) => setEmail(obj.target.value)}
-      />
-      <InputText 
-        label='Telefone:'
-        placeholder='Ex: (85) 94344-4385'
-        value={phone}
-        onChange={(obj) => setPhone(obj.target.value)}
-      />
-      <InputText 
-        label='Senha:'
-        type='password'
-        value={password}
-        onChange={(obj) => setPassword(obj.target.value)}
-      />
-      <Button variant='success' text='Cadastrar' onClick={() => handleSubmit()} />
+      <Form onSubmit={handleSubmit}>
+        <InputText 
+          label='Nome:'
+          placeholder='Ex: Ana Maria'
+          value={name}
+          onChange={(obj) => setName(obj.target.value)}
+        />
+        <InputText 
+          label='CPF:'
+          placeholder='Ex: 02738499302'
+          value={cpf}
+          onChange={(obj) => setCpf(obj.target.value)}
+        />
+        <InputText 
+          label='Email:'
+          placeholder='Ex: anamaria@gmail.com'
+          value={email}
+          onChange={(obj) => setEmail(obj.target.value)}
+        />
+        <InputText 
+          label='Telefone:'
+          placeholder='Ex: (85) 94344-4385'
+          value={phone}
+          onChange={(obj) => setPhone(obj.target.value)}
+        />
+        <InputText 
+          label='Senha:'
+          type='password'
+          value={password}
+          onChange={(obj) => setPassword(obj.target.value)}
+        />
+        <Button variant='success' text='Cadastrar' type='submit' />
+      </Form>
     </MainContainer>
   )
 }

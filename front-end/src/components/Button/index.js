@@ -5,6 +5,7 @@ export default function (props) {
     <Button 
       variant={props.variant}
       onClick={props.onClick}
+      type={props.type}
     >
       {props.text}
     </Button>

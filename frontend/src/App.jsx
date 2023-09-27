@@ -1,6 +1,6 @@
 import React from "react";
 
-import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Singup from "@pages/Singup";
 import Singin from "@pages/Singin";
@@ -25,8 +25,6 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    //<Singup />
-    //<Singin />
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>

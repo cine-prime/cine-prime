@@ -1,5 +1,7 @@
 import express from 'express';
 import { routes } from './routes/routes';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port = process.env.BACKEND_PORT;

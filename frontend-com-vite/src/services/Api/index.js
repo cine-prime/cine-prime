@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backEndPort = import.meta.env.REACT_APP_BACKEND_PORT;
+const backEndPort = import.meta.env.VITE_BACKEND_PORT;
 
 export default axios.create({
   baseURL: `http://localhost:${backEndPort}`,

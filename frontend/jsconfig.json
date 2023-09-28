@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /*Bundler  mode*/
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*", "./dist/*", ""],
+      "@pages/*": ["./src/pages/*"],
+      "@services/*": ["./src/services/*"],
+      "@components/*": ["./src/components/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["./node_modules/*", "dist"]
+}

@@ -1,5 +1,4 @@
 import { useRouteError } from "react-router-dom";
-import MainContainer from "@src/components/ContentContainer";
 
 export default function NotFoundPage() {
   const error = useRouteError();

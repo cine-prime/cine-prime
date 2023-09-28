@@ -1,6 +1,12 @@
 import React from "react";
-import styles from "./style.css?inline";
+import "./style.css";
+import CinePrimeNavbar from "../CinePrimeNavbar";
 
 export default function PageContainer(props) {
-  return <div className={styles.pageContainer}>{props.children}</div>;
+  return (
+    <div className={"pageContainer"}>
+      {props.navbar}
+      {props.children}
+    </div>
+  );
 }

@@ -21,3 +21,12 @@ model User {
   //carrinhos Carrinho[]
   //Reserva   Reserva[]
 }
+
+model Movie {
+  id             Int      @id @default(autoincrement())
+  name           String
+  genre          String
+  duration       Int
+  classification String
+  synopsis       String
+}

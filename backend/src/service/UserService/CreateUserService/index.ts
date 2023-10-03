@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const cpfCinemaOwner = "10200092338";
+const cpfCinemaOwner = "12345678945";
 
 interface IUser {
   nome: string;

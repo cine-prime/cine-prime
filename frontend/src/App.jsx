@@ -15,6 +15,7 @@ import NotFoundPage from "@pages/NotFoundPage";
 import PageContainer from "@components/PageContainer";
 import ContentContainer from "@components/ContentContainer";
 import CinePrimeNavbar from "@components/CinePrimeNavbar";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -37,19 +38,21 @@ function App() {
     <React.StrictMode>
       {/* onde entra o conteúdo da página*/}
       <BrowserRouter>
-        <PageContainer navbar={<CinePrimeNavbar />}>
-          <ContentContainer>
-            <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-                errorElement={<NotFoundPage />}
-              />
-              <Route path="/cadastro" element={<Singup />} />
-              <Route path="/login" element={<Singin />} />
-            </Routes>
-          </ContentContainer>
-        </PageContainer>
+        <AuthContextProvider>
+          <PageContainer navbar={<CinePrimeNavbar />}>
+            <ContentContainer>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Home />}
+                  errorElement={<NotFoundPage />}
+                />
+                <Route path="/cadastro" element={<Singup />} />
+                <Route path="/login" element={<Singin />} />
+              </Routes>
+            </ContentContainer>
+          </PageContainer>
+        </AuthContextProvider>
       </BrowserRouter>
     </React.StrictMode>
   );

@@ -11,7 +11,7 @@ export default function CinePrimeNavbar() {
     <>
       <Navbar bg="dark" data-bs-theme="dark" style={{ width: "100%"}}>
         <Container>
-          <Navbar.Brand href="/">CinePrime</Navbar.Brand>
+          <Link className="navbar-brand" to="/">CinePrime</Link>
           <Container className="d-flex justify-content-end" >
 
           {user?

@@ -1,11 +1,8 @@
 import React from "react";
 
 import {
-  BrowserRouter,
   Routes,
-  Route,
-  createBrowserRouter,
-  RouterProvider,
+  Route
 } from "react-router-dom";
 
 import Singup from "@pages/Singup";
@@ -17,43 +14,30 @@ import ContentContainer from "@components/ContentContainer";
 import CinePrimeNavbar from "@components/CinePrimeNavbar";
 import { AuthContextProvider } from "./contexts/AuthContext";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/cadastro",
-    element: <Singup />,
-  },
-  {
-    path: "/login",
-    element: <Singin />,
-  },
-]);
 
 function App() {
   return (
     <React.StrictMode>
-      {/* onde entra o conteúdo da página*/}
-      <BrowserRouter>
-        <AuthContextProvider>
-          <PageContainer navbar={<CinePrimeNavbar />}>
-            <ContentContainer>
-              <Routes>
-                <Route
-                  path="/"
-                  element={<Home />}
-                  errorElement={<NotFoundPage />}
-                />
-                <Route path="/cadastro" element={<Singup />} />
-                <Route path="/login" element={<Singin />} />
-              </Routes>
-            </ContentContainer>
-          </PageContainer>
-        </AuthContextProvider>
-      </BrowserRouter>
+      <AuthContextProvider>
+        <PageContainer navbar={<CinePrimeNavbar />}>
+          <ContentContainer>
+            <Routes>
+              <Route
+                path="/" element={<Home />}
+              >
+              </Route>
+              <Route path="/cadastro" element={<Singup />}
+
+              />
+              <Route path="/login" element={<Singin />}
+              />
+              <Route path="*" element={<NotFoundPage />}
+              />
+
+            </Routes>
+          </ContentContainer>
+        </PageContainer>
+      </AuthContextProvider>
     </React.StrictMode>
   );
 }

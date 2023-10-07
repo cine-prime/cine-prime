@@ -30,3 +30,9 @@ model Movie {
   classification String
   synopsis       String
 }
+
+model Room {
+  id                      Int      @id @default(autoincrement())
+  qtd_max                 Int
+  typeExhibitionAccepted  String
+}

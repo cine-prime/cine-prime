@@ -30,7 +30,7 @@ export default function Singup(props) {
       alert(`Usuário ${data.nome} cadastrado com sucesso!`);
       navigate("/");
     } catch (error) {
-      console.log("ERROR ->", error.response.data.message);
+      console.log("ERROR ->", error);
       alert(`Erro: ${error.response.data.message}`);
     }
   };

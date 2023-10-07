@@ -17,7 +17,7 @@ export class UserAuthenticationService {
       return res.status(400).json({ message: 'Email e senha são obrigatórios' });
     }
 
-    const user = await prisma.user.findUnique({
+    let user = await prisma.user.findUnique({
       where: {
         email: email,
       },
@@ -37,6 +37,8 @@ export class UserAuthenticationService {
       'secret',
     );
 
-    return res.status(200).json({ token: token, userEmail: user.email });
+    user.password = ''
+
+    return res.status(200).json({ user: {token: token, ...user} });
   }
 }

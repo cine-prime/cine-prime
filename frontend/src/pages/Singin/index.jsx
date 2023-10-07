@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-import Api from "@services/Api";
-
 import InputText from "@components/InputText";
-import MainContainer from "@src/components/ContentContainer";
 import Button from "@components/Button";
+import { useAuth } from "@src/hooks/useAuth";
 
 export default function Singin(props) {
+  const { signIn } = useAuth()
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -17,15 +17,10 @@ export default function Singin(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await Api.post("/auth", {
-        email: email,
-        password: password,
-      });
-      localStorage.setItem("auth_token", data.token);
-      localStorage.setItem("user_email", data.userEmail);
+      await signIn(email, password)
       navigate("/");
     } catch (error) {
-      console.log("ERROR ->", error.response.data.message);
+      console.log("ERROR ->", error);
       alert(`Erro: ${error.response.data.message}`);
     }
   };

@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const cpfCinemaOwner = "10200092338";
+const cpfCinemaOwner = "12345678945";
 
 interface IUser {
   nome: string;
@@ -20,7 +20,8 @@ export class CreateUserService {
       return res.status(400).json({ message: "Preencha todos os campos" });
     }
 
-    if (cpf.length !== 11) {
+    const cpfRegex = /^\d{11}$/;
+    if (!cpfRegex.test(cpf)) {
       return res.status(400).json({ message: "CPF inválido, preencha somente os 11 números, sem pontuações ou espaços" });
     }
 

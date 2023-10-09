@@ -12,7 +12,7 @@ import { CreateMovieController, ListMoviesController, FindMovieByIdController, D
 import { AuthController } from "../controllers/LoginController";
 
 //Room
-import { CreateRoomController, DeleteRoomController, ListRoomsController, FindRoomByIdController, UpdateRoomController } from "@src/controllers/RoomController";
+import { CreateRoomController, DeleteRoomController, ListRoomsController, FindRoomByIdController, UpdateRoomController } from "../controllers/RoomController";
 
 // User objects
 const createUserController = new CreateUserController();

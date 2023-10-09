@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { CreateRoomService } from "@src/service/RoomService/CreateRoomService";
-import { DeleteRoomService } from "@src/service/RoomService/DeleteRoomService";
-import { FindRoomByIdService } from "@src/service/RoomService/FindByIdRoomService";
-import { ListRoomsService } from "@src/service/RoomService/FindAllRoomsService";
-import { UpdateRoomService } from "@src/service/RoomService/UpdateRoomService";
+import { CreateRoomService } from "../service/RoomService/CreateRoomService";
+import { DeleteRoomService } from "../service/RoomService/DeleteRoomService";
+import { FindRoomByIdService } from "../service/RoomService/FindByIdRoomService";
+import { ListRoomsService } from "../service/RoomService/FindAllRoomsService";
+import { UpdateRoomService } from "../service/RoomService/UpdateRoomService";
 
 interface IRoom {
     qtd_max: number;

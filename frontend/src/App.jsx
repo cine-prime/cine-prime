@@ -9,6 +9,8 @@ import Singup from "@pages/Singup";
 import Singin from "@pages/Singin";
 import Home from "@pages/Home";
 import NotFoundPage from "@pages/NotFoundPage";
+import EmployeeList from "@pages/EmployeeList";
+import EmployeeAddOrEdit from "@pages/EmployeeAddOrEdit";
 import PageContainer from "@components/PageContainer";
 import ContentContainer from "@components/ContentContainer";
 import CinePrimeNavbar from "@components/CinePrimeNavbar";
@@ -30,6 +32,12 @@ function App() {
 
               />
               <Route path="/login" element={<Singin />}
+              />
+              <Route path="/funcionarios" element={<EmployeeList />}
+              />
+              <Route path="/funcionario/editar" element={<EmployeeAddOrEdit />}
+              />
+              <Route path="/funcionario/cadastrar" element={<EmployeeAddOrEdit />}
               />
               <Route path="*" element={<NotFoundPage />}
               />

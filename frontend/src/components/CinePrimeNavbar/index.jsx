@@ -17,7 +17,12 @@ export default function CinePrimeNavbar() {
           {user?
             <>
               <Link style={{marginRight: '20px'}}>{`Perfil (${user.nome})`}</Link>
-              {isAdmin && <Link style={{marginRight: '20px'}}>Cadastrar Funcionários</Link>}
+              {isAdmin && 
+                <Link style={{marginRight: '20px'}}
+                  to='/funcionarios'
+                >
+                  Funcionários
+                </Link>}
               <Link style={{marginRight: '20px'}} onClick={signOut}>Sair</Link>
             </>
             :

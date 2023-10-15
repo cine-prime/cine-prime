@@ -73,7 +73,8 @@ export class CreateUserService {
           id: user.id,
         },
         data: {
-          isAdmin: true
+          isAdmin: true,
+          profile: 'employee',
         },
       });
     }

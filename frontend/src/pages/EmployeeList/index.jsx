@@ -74,6 +74,8 @@ export default function EmployeeList(props) {
 
   if (!employees) {
     return (
+      <>
+      <button onClick={() => navigate('/funcionario/cadastrar')} style={{ alignSelf: 'flex-end', borderColor: 'green', color: 'green'}}>Cadastrar novo funcionario</button>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -83,6 +85,7 @@ export default function EmployeeList(props) {
         <tbody>
         </tbody>
       </Table>
+      </>
     )
   }
 

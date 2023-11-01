@@ -1,14 +1,14 @@
-# Visão Geral
+### CinePrime - Aplicação de Gerenciamento de Cinema
 
-CinePrime é uma aplicação de gerenciamento de cinema, que permite cadastrar sessões de filmes, listar sessões disponíveis, cadastrar e listar filmes, cadastrar compradores, gerenciar ingressos e realizar compras de ingressos. O objetivo da aplicação é fornecer uma plataforma para que os usuários possam encontrar informações sobre sessões de filmes, comprar ingressos e gerenciar suas compras.
+### Visão Geral
+O CinePrime é uma aplicação de gerenciamento de cinema que simplifica a administração de sessões de filmes, o cadastro e a listagem de filmes, compradores, gerenciamento de ingressos e a compra de ingressos. O objetivo desta aplicação é fornecer uma plataforma conveniente para os usuários acessarem informações sobre sessões de filmes, comprar ingressos e gerenciar suas compras.
 
-### Tecnologias
+### Tecnologias Utilizadas
+O CinePrime foi desenvolvido utilizando um conjunto de tecnologias modernas para garantir desempenho e eficiência. Aqui estão as principais tecnologias utilizadas:
 
-Para criar essa aplicação, utilizei as seguintes tecnologias:
-
-Banco de Dados: Postgres,
-Linguagem de Programação: Typescript,
-Framework Web e biblioteca: Express e Node.js,
-ORM: Prisma ORM,
-Gerenciador de Containers: Docker,
-Autenticação: JWT.
+  Banco de Dados: Postgres
+  Linguagem de Programação: Typescript
+  Framework Web e Biblioteca: Express e Node.js
+  ORM (Object-Relational Mapping): Prisma ORM
+  Gerenciador de Containers: Docker
+  Autenticação: JWT (JSON Web Tokens)

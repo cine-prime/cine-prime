@@ -1,0 +1,9 @@
+node_modules
+/prisma/migrations
+
+*.env
+
+# Locks
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

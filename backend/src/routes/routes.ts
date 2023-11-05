@@ -46,13 +46,15 @@ routes.get("/user", listarUsersController.index);
 routes.get("/user", listarUserController.listarUsers);
 routes.get("/user/:id", findUserByIdController.find);
 routes.put("/user/:id", updateUserController.update);
+import _auth from "../middleware/_auth";
 
-//Rotas Movies
-routes.post("/movies", createMovieController.store);
-routes.get("/movies", listMovieController.index)
-routes.get("/movies/:id", findMovieByIdController.find)
-routes.put("/movies/:id", updateMovieController.update)
-routes.delete("/movies/:id", deleteMovieController.delete)
+import userRouter from './user.routes';
+import authRouter from './auth.routes';
+import employeeRouter from "./employee.routes";
+import moviesRouter from "./movies.routes";
+
+// Rotas User
+routes.use('/user', userRouter);
 
 //Rotas Rooms
 routes.post("/rooms", createRoomController.store);
@@ -62,6 +64,14 @@ routes.put("/rooms/:id", updateRoomController.update)
 routes.delete("/rooms/:id", deleteRoomController.delete)
 
 // Rotas de autenticação
-routes.post("/auth", authController.execute);
+routes.use("/auth", authRouter);
+
+routes.use(_auth); // Autenticação obrigatória para rotas daqui para abaixo. 
+
+//Rotas Funcionários
+routes.use('/employee', employeeRouter);
+
+//Rotas Movies
+routes.use("/movies", moviesRouter);
 
 

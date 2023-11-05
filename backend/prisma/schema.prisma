@@ -13,11 +13,12 @@ datasource db {
 model User {
   id        Int        @id @default(autoincrement())
   nome      String?
-  cpf       String
+  cpf       String     @unique
   telefone  String?
   email     String     @unique
   password  String
   isAdmin   Boolean    @default(false)
+  profile   ProfileType @default(client)
   //carrinhos Carrinho[]
   //Reserva   Reserva[]
 }
@@ -35,4 +36,8 @@ model Room {
   id                      Int      @id @default(autoincrement())
   qtd_max                 Int
   typeExhibitionAccepted  String
+}
+enum ProfileType {
+  employee
+  client
 }

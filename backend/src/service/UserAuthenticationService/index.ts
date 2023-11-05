@@ -30,11 +30,12 @@ export class UserAuthenticationService {
     if(password !== user.password) return res.status(400).json({ message: 'Senha incorreta' });
 
     const token = sign({
+        id: user.id,
         email: user.email,
         password: user.password,
         isAdmin: user.isAdmin,
       },
-      'secret',
+      process.env.JWT_SECRET!,
     );
 
     user.password = ''

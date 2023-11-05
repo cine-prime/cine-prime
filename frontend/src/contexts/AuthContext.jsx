@@ -8,11 +8,15 @@ export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'))
-    if (storedUser) {
-      setUser(storedUser)
+    if (!user) {
+      const storedUser = JSON.parse(localStorage.getItem('user'))
+      if (storedUser) {
+        Api.defaults.headers['Authorization'] = `Bearer ${storedUser.token}`
+        setUser(storedUser)
+
+      }
     }
-  }, [])
+  }, [user])
 
   async function signIn(email, password) {
     try {

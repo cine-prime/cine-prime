@@ -53,6 +53,7 @@ import userRouter from './user.routes';
 import authRouter from './auth.routes';
 import employeeRouter from "./employee.routes";
 import moviesRouter from "./movies.routes";
+import sessionsRouter from "./session.routes";
 
 // Rotas User
 routes.use('/user', userRouter);
@@ -75,4 +76,5 @@ routes.use('/employee', employeeRouter);
 //Rotas Movies
 routes.use("/movies", moviesRouter);
 
-
+// rotas session
+routes.use("/sessions", sessionsRouter);

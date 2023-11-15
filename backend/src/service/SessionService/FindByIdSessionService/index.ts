@@ -3,16 +3,16 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-interface IRoom {
+interface ISession {
     id: number;
 }
-export class FindRoomByIdService {
-    async execute({id}:IRoom,req: Request, res: Response ) {
-        const roomExists = await prisma.room.findUnique({
+export class FindSessionByIdService {
+    async execute({id}:ISession,req: Request, res: Response ) {
+        const sessionExists = await prisma.session.findUnique({
             where: {
                 id: id,
             },
         });
-        return res.status(200).json(roomExists);
+        return res.status(200).json(sessionExists);
     }
 }

@@ -3,39 +3,51 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-interface IRoom {
-  qtd_max: number;
-  typeExhibitionAccepted: string;
+interface ISession {
+  dateTime: Date;
+  exibitionType: string;
+  dublingType: string;
+  idRoom: number;
+  idFilm: number;
 }
 
-export class UpdateRoomService {
-    async execute({ qtd_max, typeExhibitionAccepted }: IRoom, req: Request, res: Response) {
+export class UpdateSessionService {
+    async execute({ dateTime, exibitionType, dublingType, idFilm, idRoom }: ISession, req: Request, res: Response) {
   
       const { id } = req.params;
   
-      if (!qtd_max || !typeExhibitionAccepted) {
+      if (
+        !dateTime || 
+        !exibitionType || 
+        !dublingType ||
+        ! idFilm ||
+        ! idRoom
+        ) {
         return res.status(400).json({ message: "Preencha todos os campos" });
       }
   
-      const roomExiste = await prisma.room.findUnique({
+      const sessionExiste = await prisma.session.findUnique({
         where: {
           id: Number(id),
         },
       });
   
-      if (!roomExiste) {
-        return res.status(400).json({ message: "Sala não existe" });
+      if (!sessionExiste) {
+        return res.status(400).json({ message: "Sessão não existe" });
       }
   
-      let room = await prisma.room.update({
+      let session = await prisma.session.update({
         where: {
           id: Number(id),
         },
         data: {
-          qtd_max,
-          typeExhibitionAccepted
+          dateTime,
+          exibitionType,
+          dublingType,
+          idFilm,
+          idRoom
         },
       });
-      return res.status(201).json(room);
+      return res.status(201).json(session);
     };
   }

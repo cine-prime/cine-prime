@@ -37,6 +37,17 @@ model Room {
   qtd_max                 Int
   typeExhibitionAccepted  String
 }
+
+model Session {
+  id            Int      @id @default(autoincrement())
+  dateTime      DateTime
+  idRoom        Int
+  idFilm        Int
+  exibitionType String
+  dublingType   String
+}
+
+
 enum ProfileType {
   employee
   client

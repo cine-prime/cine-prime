@@ -14,6 +14,40 @@ interface IUser {
 }
 
 export class CreateUserService {
+  validateCpf(value: string): boolean {
+    const cpfLimpo = value.replace(/[^\d]/g, '');
+
+    if (cpfLimpo.length !== 11 || /^(\d)\1{10}$/.test(cpfLimpo)) {
+      return false;
+    }
+
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+      soma += parseInt(cpfLimpo.charAt(i)) * (10 - i);
+    }
+
+    let resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) {
+      resto = 0;
+    }
+
+    if (resto !== parseInt(cpfLimpo.charAt(9))) {
+      return false;
+    }
+
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+      soma += parseInt(cpfLimpo.charAt(i)) * (11 - i);
+    }
+
+    resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) {
+      resto = 0;
+    }
+
+    return resto === parseInt(cpfLimpo.charAt(10));
+  }
+
   async execute({ nome, cpf, email, telefone, password }: IUser, req: Request, res: Response) {
 
     if (!nome || !cpf || !email || !telefone || !password) {
@@ -21,8 +55,9 @@ export class CreateUserService {
     }
 
     const cpfRegex = /^\d{11}$/;
-    if (!cpfRegex.test(cpf)) {
-      return res.status(400).json({ message: "CPF inválido, preencha somente os 11 números, sem pontuações ou espaços" });
+    if (!cpfRegex.test(cpf) || !this.validateCpf(cpf)){   //colocar o ||
+      
+      return res.status(400).json({ message: "CPF inválido, preencha um CPF valido com 11 números, sem pontuações ou espaços" });
     }
 
     const userExiste = await prisma.user.findFirst({
@@ -82,3 +117,4 @@ export class CreateUserService {
     return res.status(201).json(user);
   };
 }
+

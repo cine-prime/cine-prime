@@ -1,6 +1,8 @@
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar, Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "@src/hooks/useAuth";
+
+
 
 export default function CinePrimeNavbar() {
   const { user, signOut } = useAuth()
@@ -23,7 +25,7 @@ export default function CinePrimeNavbar() {
                 >
                   Funcionários
                 </Link>}
-              <Link style={{marginRight: '20px'}} onClick={signOut}>Sair</Link>
+              <Link style={{marginRight: '20px'}} onClick={()=>{signOut();}} to={'/'}>Sair</Link> 
             </>
             :
             <>

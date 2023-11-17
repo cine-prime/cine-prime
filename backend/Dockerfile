@@ -18,16 +18,14 @@ COPY tsconfig.json ./
 
 # Copia todo o conteúdo do diretório atual para o diretório de trabalho no contêiner
 COPY . .
-
 # Instala o pnpm globalmente
 RUN npm install -g pnpm
 
 # Instala as dependências usando pnpm
 RUN pnpm i
 
-
 # Define a porta do contêiner para 3000
 EXPOSE 3333
 
 # Comando para rodar o servidor de desenvolvimento
-CMD ["pnpm", "dev"]
+CMD /bin/sh -c "pnpm prisma db push  && pnpm dev"

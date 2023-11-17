@@ -19,8 +19,5 @@ COPY . .
 # Define a porta do contêiner para 3000
 EXPOSE 3000
 
-# Define a variável de ambiente VITE_BACKEND_PORT como 3333
-ENV VITE_BACKEND_PORT=3333
-
 # Comando para rodar o servidor de desenvolvimento
 CMD ["pnpm", "dev"]

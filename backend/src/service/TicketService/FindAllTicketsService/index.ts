@@ -3,15 +3,16 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export class ListRoomsService {
+export class ListTicketsService {
     async execute(_req: Request, res: Response) {
         try {
-            const rooms = await prisma.room.findMany({
+            const tickets = await prisma.ticket.findMany({
                 include: {
-                    sessions: true,
+                    session: true,
+                    user: true,
                 },
             });
-            return res.status(200).json(rooms);
+            return res.status(200).json(tickets);
         } catch (error: any) {
             return res.status(500).json({ message: error.message });
         }

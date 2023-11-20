@@ -12,8 +12,17 @@ interface ISession {
 }
 
 export class ListSessionsService {
-    async execute(_req: Request, res: Response){
-        const sessions = await prisma.session.findMany();
-        return res.json(sessions);
+    async execute(_req: Request, res: Response) {
+        try {
+            const sessions = await prisma.session.findMany({
+                include: {
+                    room: true,
+                    movie: true,
+                },
+            });
+            return res.status(200).json(sessions);
+        } catch (error: any) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }

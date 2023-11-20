@@ -14,6 +14,7 @@ import employeeRouter from "./employee.routes";
 import moviesRouter from "./movies.routes";
 import sessionsRouter from "./session.routes";
 import roomsRouter from "./room.routes";
+import ticketRouter from "./ticket.routes";
 
 // Rotas User
 routes.use('/user', userRouter);
@@ -31,7 +32,10 @@ routes.use('/room', roomsRouter);
 routes.use('/employee', employeeRouter);
 
 //Rotas Movies
-routes.use("/movies", moviesRouter);
+routes.use("/movie", moviesRouter);
 
 // rotas session
-routes.use("/sessions", sessionsRouter);
+routes.use("/session", sessionsRouter);
+
+//rotas ticket
+routes.use("/ticket", ticketRouter);

@@ -7,18 +7,23 @@ interface Imovie {
     id: number;
 }
 export class FindMovieByIdService {
-    async execute({id}:Imovie,req: Request, res: Response ) {
+    async execute({ id }: Imovie, req: Request, res: Response) {
+        if (!id) {
+            return res.status(400).json({ message: 'Id não informado' });
+        }
+        try {
+            const movieExists = await prisma.movie.findUnique({
+                where: {
+                    id: id,
+                },
+                include: {
+                    sessions: true,
+                },
+            });
 
-      console.log(id);
-
-        const movieExists = await prisma.movie.findUnique({
-            where: {
-                id: id,
-            },
-        });
-
-        console.log(movieExists);
-
-        return res.status(200).json(movieExists);
+            return res.status(200).json(movieExists);
+        } catch (error: any) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }

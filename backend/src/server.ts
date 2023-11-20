@@ -11,8 +11,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use(routes);
-
-app.listen(port, () => {
-    console.log(`Funcionando em http://localhost:${port}`);
+try {
+    app.listen(port, () => {
+        console.log(`Funcionando em http://localhost:${port}`);
+    });
+} catch (error) {
+    console.log(error);
 }
-);

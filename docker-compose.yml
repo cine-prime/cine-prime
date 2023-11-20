@@ -24,12 +24,8 @@ services:
     environment:
       BACKEND_PORT: 3333
       DATABASE_URL: "postgres://cineprime:cineprime@cineprime_pg_database:5432/cineprime_db"
-      DATABASE_USER: "cineprime"
-      DATABASE_PASSWORD: "cineprime"
-      DATABASE_NAME: "cineprime_db"
-      DATABASE_HOST: "localhost"
-      DATABASE_PORT: "5432"
       JWT_SECRET: "40028922ehofunkdoiudiquevaidarplaystation2"
+      CPF_CINEMA_OWNER: "81912063310"
     env_file:
       - backend/.env
     depends_on:

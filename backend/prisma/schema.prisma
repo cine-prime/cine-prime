@@ -6,8 +6,14 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum ProfileType {
+  employee
+  client
 }
 
 model User {
@@ -21,33 +27,51 @@ model User {
   profile  ProfileType @default(client)
   //carrinhos Carrinho[]
   //Reserva   Reserva[]
+  tickets  Ticket[]
 }
 
 model Movie {
-  id             Int    @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   name           String
   genre          String
   duration       Int
   classification String
   synopsis       String
+  sessions       Session[]
 }
 
 model Room {
-  id                     Int    @id @default(autoincrement())
+  id                     Int       @id @default(autoincrement())
   qtd_max                Int
   typeExhibitionAccepted String
+  sessions               Session[]
 }
 
 model Session {
-  id            Int      @id @default(autoincrement())
-  dateTime      DateTime
-  idRoom        Int
-  idFilm        Int
-  exibitionType String
-  dublingType   String
+  id              Int      @id @default(autoincrement())
+  dateTime        DateTime
+  idRoom          Int
+  idFilm          Int
+  exibitionType   String
+  dublingType     String
+  atualTicketsQtd Int
+  maxTicketsQtd   Int
+  tickets         Ticket[]
+  room            Room     @relation(fields: [idRoom], references: [id])
+  movie           Movie    @relation(fields: [idFilm], references: [id])
+
+  @@index([idRoom])
+  @@index([idFilm])
 }
 
-enum ProfileType {
-  employee
-  client
+model Ticket {
+  id        Int     @id @default(autoincrement())
+  idUser    Int
+  idSession Int
+  type      String
+  session   Session @relation(fields: [idSession], references: [id])
+  user      User    @relation(fields: [idUser], references: [id])
+
+  @@index([idSession])
+  @@index([idUser])
 }

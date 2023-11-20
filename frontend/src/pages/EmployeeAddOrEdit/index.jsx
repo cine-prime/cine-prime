@@ -27,12 +27,12 @@ export default function EmployeeAddOrEdit(props) {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  
+
   const fetchEmployee = async () => {
     try {
       setLoading(true)
 
-      const { data } = await Api.get('/employee/'+id)
+      const { data } = await Api.get('/employee/' + id)
       setName(data.nome)
       setCpf(data.cpf)
       setEmail(data.email)
@@ -41,7 +41,7 @@ export default function EmployeeAddOrEdit(props) {
     } catch (error) {
       console.log('ERROR ->', error.message)
       alert('Erro ao carregar funcionário. Tente novamente mais tarde')
-    
+
     } finally {
       setLoading(false)
 
@@ -59,7 +59,7 @@ export default function EmployeeAddOrEdit(props) {
     e.preventDefault();
     try {
       if (editing) {
-        const { data } = await Api.put('/employee/'+id, {
+        const { data } = await Api.put('/employee/' + id, {
           nome: name,
           cpf: cpf,
           email: email,
@@ -67,7 +67,7 @@ export default function EmployeeAddOrEdit(props) {
           password: password,
         });
         alert(`Funcionário ${data.nome} atualizado com sucesso!`);
-        navigate("/funcionarios");
+        navigate("/funcionario");
 
       } else {
         const { data } = await Api.post('/employee/', {
@@ -78,9 +78,9 @@ export default function EmployeeAddOrEdit(props) {
           password: password,
         });
         alert(`Funcionário ${data.nome} cadastrado com sucesso!`);
-        navigate("/funcionarios");
+        navigate("/funcionario");
       }
-      
+
     } catch (error) {
       console.log("ERROR ->", error.message);
       alert(`Erro: ${error.response.data.message}`);
@@ -122,7 +122,7 @@ export default function EmployeeAddOrEdit(props) {
           value={phone}
           onChange={(obj) => setPhone(obj.target.value)}
         />
-        {!editing && 
+        {!editing &&
           <InputText
             label="Senha:"
             type="password"

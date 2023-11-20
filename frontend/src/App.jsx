@@ -15,6 +15,7 @@ import PageContainer from "@components/PageContainer";
 import ContentContainer from "@components/ContentContainer";
 import CinePrimeNavbar from "@components/CinePrimeNavbar";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { ProtectedRoute } from "./pages/ProtectedPage";
 
 
 function App() {
@@ -33,12 +34,15 @@ function App() {
               />
               <Route path="/login" element={<Singin />}
               />
-              <Route path="/funcionarios" element={<EmployeeList />}
-              />
-              <Route path="/funcionario/editar" element={<EmployeeAddOrEdit />}
-              />
-              <Route path="/funcionario/cadastrar" element={<EmployeeAddOrEdit />}
-              />
+              <Route path="/funcionario" element={<ProtectedRoute type={'admin'} />}
+              >
+                <Route path="list" element={<EmployeeList />}
+                />
+                <Route path="editar" element={<EmployeeAddOrEdit />}
+                />
+                <Route path="cadastrar" element={<EmployeeAddOrEdit />}
+                />
+              </Route>
               <Route path="*" element={<NotFoundPage />}
               />
 

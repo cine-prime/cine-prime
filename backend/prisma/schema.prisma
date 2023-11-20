@@ -51,17 +51,17 @@ model Session {
   id              Int      @id @default(autoincrement())
   dateTime        DateTime
   idRoom          Int
-  idFilm          Int
+  idMovie         Int
   exibitionType   String
   dublingType     String
   atualTicketsQtd Int
   maxTicketsQtd   Int
   tickets         Ticket[]
   room            Room     @relation(fields: [idRoom], references: [id])
-  movie           Movie    @relation(fields: [idFilm], references: [id])
+  movie           Movie    @relation(fields: [idMovie], references: [id])
 
   @@index([idRoom])
-  @@index([idFilm])
+  @@index([idMovie])
 }
 
 model Ticket {

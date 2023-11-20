@@ -8,16 +8,16 @@ interface ISession {
     exibitionType: string;
     dublingType: string;
     idRoom: number;
-    idFilm: number;
+    idMovie: number;
     atualTicketsQtd: number;
     maxTicketsQtd: number;
 }
 
 export class UpdateSessionService {
-    async execute({ dateTime, exibitionType, dublingType, idFilm, idRoom, atualTicketsQtd, maxTicketsQtd }: ISession, req: Request, res: Response) {
+    async execute({ dateTime, exibitionType, dublingType, idMovie, idRoom, atualTicketsQtd, maxTicketsQtd }: ISession, req: Request, res: Response) {
         const { id } = req.params;
 
-        if (!dateTime || !exibitionType || !dublingType || !idFilm || !idRoom || !atualTicketsQtd || !maxTicketsQtd) {
+        if (!dateTime || !exibitionType || !dublingType || !idMovie || !idRoom || !atualTicketsQtd || !maxTicketsQtd) {
             return res.status(400).json({ message: 'Preencha todos os campos' });
         }
         try {
@@ -39,7 +39,7 @@ export class UpdateSessionService {
                     dateTime,
                     exibitionType,
                     dublingType,
-                    idFilm,
+                    idMovie,
                     idRoom,
                     atualTicketsQtd,
                     maxTicketsQtd,

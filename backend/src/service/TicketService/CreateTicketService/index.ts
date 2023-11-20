@@ -15,20 +15,22 @@ export class CreateTicketService {
             return res.status(400).json({ message: 'Preencha todos os campos' });
         }
         try {
-            const sessionExists = await prisma.session.findUnique({
-                where: { id: idSession },
-            });
+            const [sessionExists, userExists] = await Promise.all([
+                prisma.session.findUnique({
+                    where: { id: idSession },
+                }),
+                prisma.user.findUnique({
+                    where: { id: idSession },
+                }),
+            ]);
+
             if (!sessionExists) {
                 return res.status(400).json({ message: 'Sessão não existe' });
             }
-
-            const userExists = await prisma.user.findUnique({
-                where: { id: idSession },
-            });
-
             if (!userExists) {
                 return res.status(400).json({ message: 'Usuário não existe' });
             }
+
             if (sessionExists.atualTicketsQtd === sessionExists.maxTicketsQtd) {
                 return res.status(400).json({ message: 'Sessão lotada' });
             }
@@ -40,13 +42,12 @@ export class CreateTicketService {
                     type,
                 },
             });
-            prisma.session.update({
+            await prisma.session.update({
                 where: { id: idSession },
                 data: {
                     atualTicketsQtd: sessionExists.atualTicketsQtd + 1,
                 },
             });
-
             return res.status(201).json(ticket);
         } catch (error: any) {
             return res.status(500).json({ message: error.message });

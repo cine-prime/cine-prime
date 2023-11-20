@@ -28,4 +28,4 @@ RUN pnpm i
 EXPOSE 3333
 
 # Comando para rodar o servidor de desenvolvimento
-CMD /bin/sh -c "pnpm prisma db push  && pnpm dev"
+CMD /bin/sh -c "pnpm prisma db push && pnpm dev"

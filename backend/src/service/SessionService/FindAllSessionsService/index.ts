@@ -8,7 +8,7 @@ interface ISession {
     exibitionType: string;
     dublingType: string;
     idRoom: number;
-    idFilm: number;
+    idMovie: number;
 }
 
 export class ListSessionsService {

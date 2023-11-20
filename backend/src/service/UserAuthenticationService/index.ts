@@ -12,7 +12,8 @@ interface IUser {
 export class UserAuthenticationService {
   async execute({email, password}: IUser,
     req: Request, res: Response, next: NextFunction ) {
-
+    // console.log(email);
+    // console.log(password);
     if(!email || !password) {
       return res.status(400).json({ message: 'Email e senha são obrigatórios' });
     }
@@ -28,7 +29,7 @@ export class UserAuthenticationService {
     }
 
     if(password !== user.password) return res.status(400).json({ message: 'Senha incorreta' });
-
+    console.log(user);
     const token = sign({
         id: user.id,
         email: user.email,

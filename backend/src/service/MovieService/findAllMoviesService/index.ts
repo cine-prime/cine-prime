@@ -3,18 +3,17 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-interface IMovie {
-    name: string;
-    genre: string;
-    duration: number;
-    classification: string;
-    synopsis: string;
-}
-
 export class ListarMoviesService {
-    async execute(_req: Request, res: Response){
-        // const movies = []
-        const movies = await prisma.movie.findMany();
-        return res.json(movies);
+    async execute(_req: Request, res: Response) {
+        try {
+            const movies = await prisma.movie.findMany({
+                include: {
+                    sessions: true,
+                },
+            });
+            return res.status(200).json(movies);
+        } catch (error: any) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }

@@ -7,18 +7,23 @@ interface Iuser {
     id: number;
 }
 export class FindUserByIdService {
-    async execute({id}:Iuser,req: Request, res: Response ) {
+    async execute({ id }: Iuser, req: Request, res: Response) {
+        if (!id) {
+            return res.status(400).json({ message: 'Id não informado' });
+        }
+        try {
+            const userExists = await prisma.user.findUnique({
+                where: {
+                    id: id,
+                },
+                include: {
+                    tickets: true,
+                },
+            });
 
-      console.log(id);
-
-        const userExists = await prisma.user.findUnique({
-            where: {
-                id: id,
-            },
-        });
-
-        console.log(userExists);
-
-        return res.status(200).json(userExists);
+            return res.status(200).json(userExists);
+        } catch (error: any) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }

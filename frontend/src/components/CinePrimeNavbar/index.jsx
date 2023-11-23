@@ -16,7 +16,6 @@ export default function CinePrimeNavbar() {
         <Container>
           <Link className="navbar-brand" to="/">CinePrime</Link>
           <Container className="d-flex justify-content-end" >
-
             {user ?
               <>
                 <Link style={{ marginRight: '20px' }}>{`Perfil (${user.nome})`}</Link>
@@ -26,6 +25,20 @@ export default function CinePrimeNavbar() {
                   >
                     Funcionários
                   </Link>}
+                {user.profile === 'employee' && <>
+                  <Link style={{ marginRight: '20px' }}
+                    to='/filme/list'
+                  >
+                    Filmes
+                  </Link>
+                  <Link style={{ marginRight: '20px' }}
+                    to='/sala/list'
+                  >
+                    Salas
+                  </Link>
+                </>
+
+                }
                 <Button style={{ marginRight: '20px' }} onClick={() => { signOut(); navigate('/') }} text="Sair"></Button>
               </>
               :

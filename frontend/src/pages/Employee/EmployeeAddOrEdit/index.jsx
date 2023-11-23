@@ -97,6 +97,7 @@ export default function EmployeeAddOrEdit(props) {
 
   return (
     <>
+      <Button text={"Voltar"} onClick={() => navigate('/funcionario/list')} style={{ width: 'fit-content', marginRight: 20, alignSelf: 'start' }}></Button>
       <Form onSubmit={handleSubmit}>
         <InputText
           label="Nome:"

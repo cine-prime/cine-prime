@@ -5,17 +5,28 @@ import {
   Route
 } from "react-router-dom";
 
-import Singup from "@pages/Singup";
-import Singin from "@pages/Singin";
-import Home from "@pages/Home";
-import NotFoundPage from "@pages/NotFoundPage";
-import EmployeeList from "@pages/EmployeeList";
-import EmployeeAddOrEdit from "@pages/EmployeeAddOrEdit";
 import PageContainer from "@components/PageContainer";
 import ContentContainer from "@components/ContentContainer";
 import CinePrimeNavbar from "@components/CinePrimeNavbar";
 import { AuthContextProvider } from "./contexts/AuthContext";
-import { ProtectedRoute } from "./pages/ProtectedPage";
+
+import EmployeeList from "@pages/Employee/EmployeeList";
+import EmployeeAddOrEdit from "@pages/Employee/EmployeeAddOrEdit";
+
+import RoomView from "@pages/Rooms/RoomView";
+
+import Singup from "@pages/User/Singup";
+import Singin from "@pages/User/Singin";
+
+import MovieView from "./pages/Movie/MovieView";
+import MovieList from "./pages/Movie/MovieList";
+
+import NotFoundPage from "@pages/NotFoundPage";
+import Home from "@pages/Home";
+import { ProtectedRoute } from "@pages/ProtectedPage";
+import MovieAddOrEdit from "./pages/Movie/MovieAddOrEdit";
+import RoomList from "./pages/Rooms/RoomList";
+import RoomAddOrEdit from "./pages/Rooms/RoomAddOrEdit";
 
 
 function App() {
@@ -41,6 +52,28 @@ function App() {
                 <Route path="editar" element={<EmployeeAddOrEdit />}
                 />
                 <Route path="cadastrar" element={<EmployeeAddOrEdit />}
+                />
+              </Route>
+              <Route path="/filme" element={<ProtectedRoute type={'employee'} />}
+              >
+                <Route path="list" element={<MovieList />}
+                />
+                <Route path="editar" element={<MovieAddOrEdit />}
+                />
+                <Route path="cadastrar" element={<MovieAddOrEdit />}
+                />
+                <Route path=":id" element={<MovieView />}
+                />
+              </Route>
+              <Route path="/sala" element={<ProtectedRoute type={'employee'} />}
+              >
+                <Route path="list" element={<RoomList />}
+                />
+                <Route path="editar" element={<RoomAddOrEdit />}
+                />
+                <Route path="cadastrar" element={<RoomAddOrEdit />}
+                />
+                <Route path=":id" element={<RoomView />}
                 />
               </Route>
               <Route path="*" element={<NotFoundPage />}

@@ -108,7 +108,7 @@ export default function MovieAddOrEdit() {
         <label htmlFor='genre'>Escolha o gênero do filme:</label>
         <select name="genre" id="genre" value={genre} onChange={(evt) => { setGenre(evt.target.value) }}>
           <option value="" disabled hidden>Escolha uma opção</option>
-          <option value="Drama" selected>Drama</option>
+          <option value="Drama">Drama</option>
           <option value="Comédia">Comédia</option>
           <option value="Ação">Ação</option>
           <option value="Aventura">Aventura</option>

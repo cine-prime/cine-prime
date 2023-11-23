@@ -4,5 +4,5 @@ import React from "react";
 import "./styles.css";
 
 export default function ContentContainer({ children }) {
-  return <div className={"content_container"}>{children}</div>;
+  return <div className={"content_container"} style={{overflow:'auto'}}>{children}</div>;
 }

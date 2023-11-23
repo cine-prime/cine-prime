@@ -57,8 +57,8 @@ model Session {
   atualTicketsQtd Int
   maxTicketsQtd   Int
   tickets         Ticket[]
-  room            Room     @relation(fields: [idRoom], references: [id])
-  movie           Movie    @relation(fields: [idMovie], references: [id])
+  room            Room     @relation(fields: [idRoom], references: [id], onDelete: Cascade)
+  movie           Movie    @relation(fields: [idMovie], references: [id], onDelete: Cascade)
 
   @@index([idRoom])
   @@index([idMovie])
@@ -69,8 +69,8 @@ model Ticket {
   idUser    Int
   idSession Int
   type      String
-  session   Session @relation(fields: [idSession], references: [id])
-  user      User    @relation(fields: [idUser], references: [id])
+  session   Session @relation(fields: [idSession], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [idUser], references: [id], onDelete: Cascade)
 
   @@index([idSession])
   @@index([idUser])

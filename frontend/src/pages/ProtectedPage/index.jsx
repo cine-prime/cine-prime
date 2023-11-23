@@ -21,7 +21,7 @@ export const ProtectedRoute = ({ type }) => {
     const location = useLocation();
 
     if (!auth.user || auth.user === null) {
-        console.log('usuario nulo')
+        console.log('Usuário não logado tentando entrar em rota protegida')
         return telaDeAcessoProibido();
     }
 
@@ -29,14 +29,14 @@ export const ProtectedRoute = ({ type }) => {
 
     if (type === 'admin') {
         if (!user.isAdmin) {
-            console.log('usuario não admin entrando em rota de admin')
+            console.log('Usuário não admin entrando em rota de admin')
             return telaDeAcessoProibido()
         }
     }
 
     if (type === 'employee') {
         if (user.profile === 'client') {
-            console.log('cliente tentando entrar em rota de funcionario')
+            console.log('Cliente tentando entrar em rota de funcionário')
             return telaDeAcessoProibido()
         }
     }

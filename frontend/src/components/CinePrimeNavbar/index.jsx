@@ -36,6 +36,11 @@ export default function CinePrimeNavbar() {
                   >
                     Salas
                   </Link>
+                  <Link style={{ marginRight: '20px' }}
+                    to='/sessoes/list'
+                  >
+                    Sessões
+                  </Link>
                 </>
 
                 }

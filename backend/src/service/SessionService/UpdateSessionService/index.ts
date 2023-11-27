@@ -16,8 +16,7 @@ interface ISession {
 export class UpdateSessionService {
     async execute({ dateTime, exibitionType, dublingType, idMovie, idRoom, atualTicketsQtd, maxTicketsQtd }: ISession, req: Request, res: Response) {
         const { id } = req.params;
-
-        if (!dateTime || !exibitionType || !dublingType || !idMovie || !idRoom || !atualTicketsQtd || !maxTicketsQtd) {
+        if (!dateTime || !exibitionType || !dublingType || idMovie === undefined || idRoom === undefined || atualTicketsQtd === undefined || maxTicketsQtd === undefined) {
             return res.status(400).json({ message: 'Preencha todos os campos' });
         }
         try {
@@ -29,6 +28,22 @@ export class UpdateSessionService {
 
             if (!sessionExiste) {
                 return res.status(400).json({ message: 'Sessão não existe' });
+            }
+
+            const [movieExists, roomExists] = await Promise.all([
+                prisma.movie.findUnique({
+                    where: { id: idMovie },
+                }),
+                prisma.room.findUnique({
+                    where: { id: idRoom },
+                }),
+            ]);
+
+            if (!movieExists) {
+                return res.status(400).json({ message: 'Filme não existe' });
+            }
+            if (!roomExists) {
+                return res.status(400).json({ message: 'Sala não existe' });
             }
 
             let session = await prisma.session.update({

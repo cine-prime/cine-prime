@@ -27,7 +27,8 @@ import { ProtectedRoute } from "@pages/ProtectedPage";
 import MovieAddOrEdit from "./pages/Movie/MovieAddOrEdit";
 import RoomList from "./pages/Rooms/RoomList";
 import RoomAddOrEdit from "./pages/Rooms/RoomAddOrEdit";
-
+import SessionsList from "./pages/Sessions/SessionsList";
+import SessionAddOrEdit from "./pages/Sessions/SessionAddOrEdit";
 
 function App() {
   return (
@@ -74,6 +75,15 @@ function App() {
                 <Route path="cadastrar" element={<RoomAddOrEdit />}
                 />
                 <Route path=":id" element={<RoomView />}
+                />
+              </Route>
+              <Route path="/sessoes" element={<ProtectedRoute type={'employee'} />}
+              >
+                <Route path="list" element={<SessionsList />}
+                />
+                <Route path="cadastrar" element={<SessionAddOrEdit />}
+                />
+                <Route path="editar" element={<SessionAddOrEdit />}
                 />
               </Route>
               <Route path="*" element={<NotFoundPage />}

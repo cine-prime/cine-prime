@@ -15,7 +15,7 @@ interface ISession {
 
 export class CreateSessionService {
     async execute({ dateTime, exibitionType, dublingType, idMovie, idRoom, atualTicketsQtd, maxTicketsQtd }: ISession, req: Request, res: Response) {
-        if (!dateTime || !exibitionType || !dublingType || !idMovie || !idRoom || !maxTicketsQtd) {
+        if (!dateTime || !exibitionType || !dublingType || idMovie === undefined || idRoom === undefined || atualTicketsQtd === undefined || maxTicketsQtd === undefined) {
             return res.status(400).json({ message: 'Preencha todos os campos' });
         }
         if (atualTicketsQtd > maxTicketsQtd) {

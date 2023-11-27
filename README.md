@@ -6,8 +6,8 @@ O CinePrime é uma aplicação de gerenciamento de cinema que simplifica a admin
 ## Tecnologias Utilizadas
 O CinePrime foi desenvolvido utilizando um conjunto de tecnologias modernas para garantir desempenho e eficiência. Aqui estão as principais tecnologias utilizadas:
 
-  Banco de Dados: Postgres
   Linguagem de Programação: Typescript
+  Banco de Dados: Postgres
   Framework Web e Biblioteca: Express e Node.js
   ORM (Object-Relational Mapping): Prisma ORM
   Gerenciador de Containers: Docker

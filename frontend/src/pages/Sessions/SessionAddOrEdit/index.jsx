@@ -186,13 +186,16 @@ export default function SessionAddOrEdit() {
           onChange={(obj) => setDublingType(obj.target.value)}
         />
 
-        {editing && <input
+        {editing && 
+        <>
+        <label htmlFor="start">Ingressos vendidos:</label>
+        <input
           disabled
-          style={{marginTop: 20}}
           placeholder="Ingressos vendidos"
           type="number"
           value={atualTicketsQtd}
-        />}
+        />
+        </>}
 
         <Button variant="success" text="Salvar" type="submit" style={{marginTop: 20}} />
       </Form>

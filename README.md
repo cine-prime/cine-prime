@@ -12,3 +12,4 @@ O CinePrime foi desenvolvido utilizando um conjunto de tecnologias modernas para
   ORM (Object-Relational Mapping): Prisma ORM
   Gerenciador de Containers: Docker
   Autenticação: JWT  (JSON Web Tokens)
+

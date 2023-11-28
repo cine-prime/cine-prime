@@ -114,7 +114,7 @@ export default function SessionsList(props) {
               <td>{session.id}</td>
               <td>{converterParaFormatoDdMmYyyy(session.dateTime)}</td>
               <td>{session.idRoom}</td>
-              <td>{session.idMovie}</td>
+              <td>{session.movie.name}</td>
               <td>{session.exibitionType}</td>
               <td>{session.dublingType}</td>
               <td>{session.atualTicketsQtd}</td>

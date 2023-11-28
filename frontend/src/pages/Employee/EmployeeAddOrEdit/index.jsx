@@ -67,7 +67,7 @@ export default function EmployeeAddOrEdit(props) {
           password: password,
         });
         alert(`Funcionário ${data.nome} atualizado com sucesso!`);
-        navigate("/funcionario");
+        navigate("/funcionario/list");
 
       } else {
         const { data } = await Api.post('/employee/', {
@@ -78,7 +78,7 @@ export default function EmployeeAddOrEdit(props) {
           password: password,
         });
         alert(`Funcionário ${data.nome} cadastrado com sucesso!`);
-        navigate("/funcionario");
+        navigate("/funcionario/list");
       }
 
     } catch (error) {

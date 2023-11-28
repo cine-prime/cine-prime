@@ -98,7 +98,7 @@ export default function RoomList() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>id</th>
+            <th>Sala</th>
             <th>Quantidade máxima de pessoas</th>
             <th>Tipo de exibição suportada</th>
           </tr>

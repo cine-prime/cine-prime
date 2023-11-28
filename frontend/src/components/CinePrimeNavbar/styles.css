@@ -1,0 +1,59 @@
+/* Estilo básico da barra de navegação */
+.navbar {
+    height: 80px;
+}
+
+/* Estilo dos links de navegação */
+.navbar .nav-link {
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(246, 242, 242);
+    background-color: #3c3c58;
+    font-size: 16px;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    background-color: #5b5b8b;
+    font-weight: bold;
+    color: rgb(231, 223, 223);
+}
+
+.navbar .nav-link.active {
+    background-color: #4c4c75;
+    font-weight: bold;
+    color: rgb(231, 223, 223);
+}
+
+/* Estilo do texto do usuário */
+.user-label {
+    font-size: 14px;
+    color: gray;
+    margin-right: 8px;
+}
+
+/* Estilo do nome do usuario escolhido*/
+.user-name {
+    font-size: 16px;
+    color: white;
+}
+
+/* Estilo da imagem do logo */
+.navbar-logo {
+    height: 60px;
+    object-fit: contain;
+}
+
+.admin-label {
+    font-size: 14px;
+    color: gray;
+    margin-right: 8px;
+}
+
+.nav-link {
+    white-space: nowrap;
+    width: 115px;
+    text-align: center;
+}

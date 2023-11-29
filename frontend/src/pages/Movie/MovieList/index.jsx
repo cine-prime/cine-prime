@@ -112,8 +112,10 @@ const MovieList = (props) => {
       >
         Cadastrar novo filme
       </button>
-      <Table striped bordered hover>
-        <thead>
+      <div style={{display: 'flex',alignItems: 'flexStart' , flexDirection:'column'}}>
+        <div style={{alignSelf: 'auto'}}>
+        <Table striped bordered hover>
+        <thead > 
           <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -125,43 +127,45 @@ const MovieList = (props) => {
           </tr>
         </thead>
         <tbody>
+          
           {movies.map((movie) => (
             <tr key={movie.id}>
               <td>{movie.id}</td>
-              <td style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {movie.name}
-              </td>
+              <td>{movie.name}</td>
               <td>{movie.genre}</td>
               <td>{`${converteMinutosEmHoras(movie.duration)}`}</td>
               <td>{movie.classification}</td>
-              <td style={{ maxHeight: '150px', overflow: 'auto' }}>{movie.synopsis}</td>
-              <td style={{ height: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-                <button
+              <td style={{}}>{movie.synopsis}</td>
+              <td style={{minWidth: 300}}>
+
+                <Button style= {{backgroundColor: '#4682B4', color:' #f0f0f0',fontWeight: 'bold'}}
                   onClick={() => navigate('/filme/editar', { state: { id: movie.id } })}
-                  className="btn btn-secondary btn-editar"
-                >
-                  Editar
-                </button>
-                <button
+                  text="Editar"
+                />
+                <Button style= {{backgroundColor: '#FF433F', color:'#f0f0f0',fontWeight: 'bold', marginLeft: 5}}
                   onClick={() => {
                     if (window.confirm('Tem certeza que deseja excluir esse filme?')) {
                       excludeMovie(movie.id);
                     }
                   }}
-                  className="btn btn-secondary btn-excluir"
-                >
-                  Excluir
-                </button>
-                <button onClick={() => navigate(`/filme/${movie.id}`)} className="btn btn-secondary btn-visualizar">
-                  Visualizar
-                </button>
+                  text="Excluir"
+                />
+                 
+                <Button style={{ backgroundColor: '#2E8B57',color:'#0f0f0' ,fontWeight: 'bold', marginLeft: 5}}onClick={() => navigate(`/filme/${movie.id}`)} 
+                text="Visualizar"
+                />
+                  
+                
               </td>
             </tr>
           ))}
         </tbody>
-      </Table>
+        </Table>
+        </div>
+      </div>
     </>
   );
 };
 
 export default MovieList;
+

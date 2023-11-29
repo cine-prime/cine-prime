@@ -1,0 +1,29 @@
+.btn-editar {
+    background-color: #1d5da1;
+    color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #3385ff;
+}
+
+.btn-excluir {
+    background-color: #ac2b3a;
+    color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.btn-excluir:hover {
+    background-color: #cc001f;
+}
+
+.btn-visualizar {
+    background-color: #537b56;
+    color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.btn-visualizar:hover {
+    background-color: #2db235;
+}

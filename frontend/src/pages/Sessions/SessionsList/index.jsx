@@ -106,7 +106,8 @@ export default function SessionsList(props) {
             <th>Tipo de dublagem</th>
             <th>Quantidade de ingressos vendidos</th>
             <th>Capacidade</th>
-          </tr>
+            <th>Ações</th>
+            </tr>
         </thead>
         <tbody>
           {sessions.map((session, index) => (
@@ -120,18 +121,19 @@ export default function SessionsList(props) {
               <td>{session.atualTicketsQtd}</td>
               <td>{session.maxTicketsQtd}</td>
               <td>
-                <button onClick={() => navigate('/sessoes/editar', { state: { id: session.id } })} style={{ marginRight: '20px', borderColor: 'blue', color: 'blue' }}>Editar</button>
-                <button onClick={() => {
+                <Button style={{  backgroundColor: '#4682B4', color:' #f0f0f0',fontWeight: 'bold',marginRight: '10px'}} onClick={() => navigate('/sessoes/editar', { state: { id: session.id } })} text = 'Editar'/>
+                <Button style={{ backgroundColor: '#F0373E',color:'#ffff' ,fontWeight: 'bold' }} onClick={() => {
                   if (confirm('Tem certeza que deseja excluir essa sessão?')) {
                     excludeSession(session.id)
                   } else {
                     return false;
                   }
                 }}
-                  style={{ borderColor: 'red', color: 'red' }}
-                >
-                  Excluir
-                </button>
+                text='Excluir'
+                
+                />
+                  
+                
               </td>
             </tr>
           ))}

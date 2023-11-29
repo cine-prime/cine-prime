@@ -77,7 +77,7 @@ export default function EmployeeList(props) {
     return (
       <>
         <Button text={"Voltar"} onClick={() => navigate('/')} style={{ width: 'fit-content', marginRight: 20, alignSelf: 'start' }}></Button>
-        <button onClick={() => navigate('/funcionario/cadastrar')} style={{ alignSelf: 'flex-end', borderColor: 'green', color: 'green' }}>Cadastrar novo funcionario</button>
+        <Button style={{ marginBottom: '20px', alignSelf: 'flex-end', borderColor: 'green', backgroundColor: 'green' ,fontWeight: 'bold'}} onClick={() => navigate('/funcionario/cadastrar')}  text = 'Cadastrar novo funcionario'/>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -94,7 +94,7 @@ export default function EmployeeList(props) {
   return (
     <>
       <Button text={"Voltar"} onClick={() => navigate('/')} style={{ width: 'fit-content', marginRight: 20, alignSelf: 'start' }}></Button>
-      <button onClick={() => navigate('/funcionario/cadastrar')} style={{ alignSelf: 'flex-end', borderColor: 'green', color: 'green' }}>Cadastrar novo funcionario</button>
+      <Button style={{  marginBottom: '20px',alignSelf: 'flex-end', borderColor: 'green', backgroundColor: 'green' ,fontWeight: 'bold'}} onClick={() => navigate('/funcionario/cadastrar')}  text = 'Cadastrar novo funcionario'/>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -115,18 +115,16 @@ export default function EmployeeList(props) {
               <td>{employee.telefone}</td>
               <td>{employee.email}</td>
               <td>
-                <button onClick={() => navigate('/funcionario/editar', { state: { id: employee.id } })} style={{ marginRight: '20px', borderColor: 'blue', color: 'blue' }}>Editar</button>
-                <button onClick={() => {
+                <Button style={{ backgroundColor: '#4682B4', color:' #f0f0f0',fontWeight: 'bold',marginRight: '10px'}} onClick={() => navigate('/funcionario/editar', { state: { id: employee.id } })} text='Editar'/>
+                <Button style={{backgroundColor: '#F0373E',color:'#0f0f0' ,fontWeight: 'bold'}} onClick={() => {
                   if (confirm('Tem certeza que deseja excluir esse funcionário?')) {
                     excludeEmployee(employee.id);
                   } else {
                     return false;
                   }
                 }}
-                  style={{ borderColor: 'red', color: 'red' }}
-                >
-                  Excluir
-                </button>
+                text='Excluir'
+                />
               </td>
             </tr>
           ))}

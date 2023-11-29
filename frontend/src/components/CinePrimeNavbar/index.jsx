@@ -24,13 +24,15 @@ export default function CinePrimeNavbar() {
   return (
     <Navbar bg="dark" data-bs-theme="dark" style={{ width: "100%" }}>
       <Container>
-        <Link className="navbar-brand mb-3" to="/" onClick={handleLogoClick}>
-          <img
-            src="/assets/images/logo2.png"
-            alt="CinePrime Logo"
-            style={{ maxWidth: '100%', maxHeight: '80px' }}
-          />
-        </Link>
+        <div className="align-items-center">
+          <Link className="navbar-brand mb-3" to="/" onClick={handleLogoClick}>
+            <img
+              src="/assets/images/logo2.png"
+              alt="CinePrime Logo"
+              style={{ maxWidth: '100%', maxHeight: '80px' }}
+            />
+          </Link>
+        </div>
 
         <div className="d-flex justify-content-center align-items-center w-100">
           <div className="d-flex align-items-center">
@@ -62,6 +64,14 @@ export default function CinePrimeNavbar() {
                       onClick={() => handleLinkClick('salas')}
                     >
                       Salas
+                    </Link>
+                    <Link 
+                      className={`nav-link mx-2 ${activeLink === 'sessoes' ? 'active' : ''}`}
+                      style={{ marginRight: '20px' }}
+                      to='/sessoes/list'
+                      onClick={() => handleLinkClick('sessoes')}
+                    >
+                      Sessões
                     </Link>
                   </>
                 )}
